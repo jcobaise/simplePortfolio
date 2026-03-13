@@ -21,9 +21,12 @@ class Portfolio:
       total = total + stock.totalValue()
     return total 
 
-  def rebalance(self):    #se asume que la aplicacion permite vender porcentajes de una accion
+  def rebalance(self):    #se asume que la aplicacion permite vender porcentajes de una accion 
     movimientos = {}
     total = self.totalValue()
+    if total == 0:
+      print('realiza tus primeras compras antes de rebalancear')
+      return
     for stock in self.stocks: #se recorren solo las stocks por que al cambiar la distribucion se agregan stocks con cantidad 0 
       expectedValue = 0
       if stock.name in self.allocation:
